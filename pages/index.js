@@ -1,6 +1,11 @@
-import { margin } from "@mui/system";
 import Head from "next/head";
-import { HeroSection, Navbar, Footer } from "../components";
+import {
+  HeroSection,
+  Navbar,
+  Footer,
+  Services,
+  PeopleSay,
+} from "../components";
 
 const index = () => {
   return (
@@ -14,7 +19,9 @@ const index = () => {
       </Head>
       <Navbar />
       <HeroSection />
-      <Footer/>
+      <Services />
+      <PeopleSay />
+      <Footer />
     </div>
   );
 };

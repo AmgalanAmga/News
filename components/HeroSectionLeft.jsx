@@ -6,10 +6,10 @@ export const HeroSectionLeft = () => {
     <Box
       sx={{
         top: "50%",
-        left: { sm: "40%", md: "20%" },
         width: 515,
         color: "white",
         position: "absolute",
+        left: { sm: "30%", xl: "20%" },
         transform: "translate(-50%, -50%)",
       }}
     >
@@ -24,13 +24,13 @@ export const HeroSectionLeft = () => {
           type={"text"}
           label="Email"
           sx={{
+            borderRadius: 1,
             background: "white",
             "&& fieldset": { border: "none" },
-            borderRadius: 1,
           }}
           size="small"
         />
-        <Button variant="contained" sx={{ fontSize: 14 }}>
+        <Button variant="contained" sx={{ fontSize: 14, py: "7.5px" }}>
           Get early access
         </Button>
       </Box>
