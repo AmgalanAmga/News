@@ -1,7 +1,7 @@
 import { Instagram, Facebook, Twitter } from "@mui/icons-material";
 
 export const tabArray = [
-  { pathName: "products", tabName: "Products" },
+  { pathName: "/", tabName: "Products" },
   { pathName: "blog", tabName: "Blog" },
   { pathName: "contact", tabName: "Contact" },
   { pathName: "login", tabName: "Log in" },
