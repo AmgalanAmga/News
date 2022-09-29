@@ -8,15 +8,21 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 import { tabArray } from "../utils/usefulArrays";
 
 export const Navbar = ({ children }) => {
   const router = useRouter();
+  const pathname = router.pathname
+  console.log(router.pathname)
   const [indicatorId, setIndicatorId] = useState(0);
   const indicatorChange = (e, id) => setIndicatorId(id);
-
+  // useEffect(() => {
+  //   tabArray.forEach((el, index) => {
+  //     if (el.pathName === router.pathname) return setIndicatorId(index);
+  //   });
+  // },[]);
   return (
     <>
       <AppBar
@@ -25,9 +31,9 @@ export const Navbar = ({ children }) => {
         sx={{ background: "transparent", py: 1, px: 4 }}
       >
         <Toolbar sx={{ justifyContent: "space-between" }}>
-          <Stack direction={"row"} alignItems="baseline">
+          <Stack direction={"row"} alignItems="baseline" onClick={()=> router.push('/')} sx={{cursor:"pointer"}}>
             <Typography variant="h6">team</Typography>
-            <Typography variant="h4" sx={{ color: "#0BBEF2" }}>
+            <Typography variant="h4" sx={{ color: pathname === "/" ? "#0BBEF2" : "#ffff33" }}>
               .
             </Typography>
           </Stack>

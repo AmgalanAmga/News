@@ -1,11 +1,25 @@
-import React from 'react'
+import Head from "next/head";
+import Image from "next/image";
+import axios from "axios";
+import _ from "lodash";
+import { Typography, Box, Grid, Stack } from "@mui/material";
+import { PostCart } from "../components/PostCart";
 
-const index = () => {
+
+
+export default function Home() {
+  
   return (
-    <div>
-      Blog
-    </div>
-  )
+    <Box
+      sx={{
+        mt: 6,
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+        px: 3,
+      }}
+    >
+      hjhgj
+    </Box>
+  );
 }
-
-export default index
