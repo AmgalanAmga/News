@@ -4,8 +4,7 @@ import { Box, Typography, Avatar, Divider, Stack } from "@mui/material";
 
 export const PostCart = ({ post }) => {
   return (
-    <Link href={`/blog/${post.id}`}
-    >
+    <Link href={`/blog/${post.id}`}>
       <Box
         sx={{
           boxShadow: 5,
@@ -26,7 +25,7 @@ export const PostCart = ({ post }) => {
         <Image
           width={370}
           height={200}
-          alt="postIamge"
+          alt="postImage"
           src={post.image}
           objectFit={"fill"}
         />
@@ -44,7 +43,13 @@ export const PostCart = ({ post }) => {
                 {post.owner.firstName} {post.owner.lastName}
               </Typography>
               <Divider orientation="vertical" flexItem />
-              <Typography>{post.publishDate.slice(0, 10)}</Typography>
+              <Typography>
+                {new Date(post.publishDate.slice(0, 10)).toLocaleDateString("en-US", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}
+              </Typography>
             </Stack>
           </Stack>
         </Box>

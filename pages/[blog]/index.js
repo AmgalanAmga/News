@@ -21,15 +21,21 @@ export default function Home({ postResponse }) {
   return (
     <Box
       sx={{
-        mt: 6,
+        mb: 5,
+        px: 3,
+        mt: 15,
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
-        px: 3,
       }}
     >
       <Stack direction={"column"} spacing={2} mb={8}>
-        <Typography variant="h2" fontSize={48} fontWeight={600}>
+        <Typography
+          variant="h2"
+          fontSize={48}
+          fontWeight={600}
+          textAlign={"center"}
+        >
           Blog posts
         </Typography>
         <Typography variant="p" sx={{ color: "#6D7D8B", fontSize: 18 }}>
@@ -37,11 +43,20 @@ export default function Home({ postResponse }) {
         </Typography>
       </Stack>
       <Grid container spacing={3} justifyContent="center">
-        {_.map(postResponse, (post, id) => (
-          <Grid item sm={6} lg={3} key={id}>
-            <PostCart post={post} />
-          </Grid>
-        ))}
+        {!postResponse ? (
+          <Image
+            src="https://gifdb.com/images/high/anime-itachi-mangekyou-sharingan-vw1i0cwsucs672zt.webp"
+            alt="sharingan"
+            height={500}
+            width={500}
+          />
+        ) : (
+          _.map(postResponse, (post, id) => (
+            <Grid item sm={6} lg={3} key={id}>
+              <PostCart post={post} />
+            </Grid>
+          ))
+        )}
       </Grid>
     </Box>
   );
