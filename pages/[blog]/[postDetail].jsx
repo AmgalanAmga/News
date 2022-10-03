@@ -17,6 +17,7 @@ const postDetail = () => {
   const id = router.query.postDetail;
   const { res } = useContext(DataContext);
   const [comment, setComment] = useState("");
+  const [comments, setComments] = useState([]);
   const [commentResult, setCommentResult] = useState("");
   const [commentClicked, setCommentClicked] = useState(false);
   const filteredPost = res.filter((post) => post.id === id)[0];
@@ -39,7 +40,6 @@ const postDetail = () => {
         },
       }
     );
-    console.log(response);
   };
   const getCommentResult = async () => {
     const response = await axios.get(
@@ -51,12 +51,13 @@ const postDetail = () => {
         },
       }
     );
-    console.log(response);
+    setComments(response.data.data);
   };
-
+  useEffect(() => {
+    getCommentResult();
+  }, [id]);
   const enterHandler = async (e) => {
     if (e.keyCode === 13) {
-      getCommentResult();
       postComment();
     }
   };
@@ -111,19 +112,37 @@ const postDetail = () => {
               onClick={commendBtnHandler}
               sx={{ cursor: "pointer" }}
             >
-              Comment
+              Comments
             </Typography>
           </Stack>
         </Stack>
         {commentClicked && (
-          <TextField
-            type={"text"}
-            sx={{ width: "500px", mt: 1 }}
-            placeholder="What is your mind?"
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-            onKeyUp={enterHandler}
-          />
+          <>
+            <TextField
+              type={"text"}
+              sx={{ width: "500px", mt: 1 }}
+              placeholder="What is your mind?"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              onKeyUp={enterHandler}
+            />
+            {comments.length > 0 && (
+              <Stack
+                direction={"column"}
+                mt={1}
+                sx={{ height: 150, width: "500px", overflowY: "scroll" }}
+              >
+                {comments?.map((el, id) => (
+                  <Typography
+                    sx={{ background: "#c1c1c1", mb: 1, py: 1, px: 4 }}
+                    key={id}
+                  >
+                    {el.message}
+                  </Typography>
+                ))}
+              </Stack>
+            )}
+          </>
         )}
       </Box>
     </Box>

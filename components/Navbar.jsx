@@ -48,6 +48,7 @@ export const Navbar = ({ children }) => {
           backdropFilter: scrollValue === 0 ? "blur(0)" : "blur(10px)",
           py: 1,
           px: 4,
+          transition: "all 0.3s ease",
         }}
       >
         <Toolbar sx={{ justifyContent: "space-between" }}>
